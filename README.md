@@ -10,64 +10,33 @@ Track → Understand → Improve → Build Better Habits
 _________________________________________________________________________________________________
 
 The architecture diagram can look like this
-                    ┌──────────────────────┐
-                    │      USER            │
-                    │  AI Habit Tracker    │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                 ┌─────────────────────────┐
-                 │    React + Vite UI      │
-                 │                         │
-                 │ Dashboard               │
-                 │ Habit Tracking          │
-                 │ AI Reports              │
-                 │ Habit Health            │
-                 │ AI Suggestions          │
-                 │ AI Agent                │
-                 └────────────┬────────────┘
-                              │
-                         REST API
-                              │
-                              ▼
-                 ┌─────────────────────────┐
-                 │    Express / Node.js    │
-                 │                         │
-                 │ Auth Middleware         │
-                 │ Habit Controllers       │
-                 │ Log Controllers         │
-                 │ AI Controllers          │
-                 │ AI Agent Service        │
-                 └───────┬─────────┬───────┘
-                         │         │
-              ┌──────────┘         └────────────┐
-              ▼                                 ▼
-     ┌──────────────────┐              ┌──────────────────┐
-     │   MongoDB Atlas  │              │   Google Gemini  │
-     │                  │              │                  │
-     │ Users            │              │ AI Analysis      │
-     │ Habits           │              │ Suggestions      │
-     │ Habit Logs       │              │ Reports          │
-     │ AI Insights      │              │ Agent Decisions  │
-     │ Agent Activity   │              │ Motivation       │
-     └──────────────────┘              └──────── ┬────────┘
-                                                │
-                                                ▼
-                                   ┌────────────────────────┐
-                                   │ Autonomous AI Decision │
-                                   │                        │
-                                   │ OBSERVE → ANALYZE      │
-                                   │ → DECIDE → EXECUTE     │
-                                   │ → RECORD               │
-                                   └────────────┬───────────┘
-                                                │
-                                                ▼
-                                   ┌────────────────────────┐
-                                   │ Habit automatically    │
-                                   │ improved/created       │
-                                   └────────────────────────┘
+```mermaid
+      flowchart TD
+
+    U["USER<br/>AI Habit Tracker"]
+
+    UI["React + Vite UI<br/><br/>Dashboard<br/>Habit Tracking<br/>AI Reports<br/>Habit Health<br/>AI Suggestions<br/>AI Agent"]
+
+    API["Express / Node.js<br/><br/>Auth Middleware<br/>Habit Controllers<br/>Log Controllers<br/>AI Controllers<br/>AI Agent Service"]
+
+    DB["MongoDB Atlas<br/><br/>Users<br/>Habits<br/>Habit Logs<br/>AI Insights<br/>Agent Activity"]
+
+    GEMINI["Google Gemini<br/><br/>AI Analysis<br/>Suggestions<br/>Reports<br/>Agent Decisions<br/>Motivation"]
+
+    AGENT["Autonomous AI Decision<br/><br/>OBSERVE → ANALYZE<br/>→ DECIDE → EXECUTE<br/>→ RECORD"]
+
+    RESULT["Habit automatically<br/>improved / created"]
 
 
+    U --> UI
+    UI -->|"REST API"| API
+
+    API --> DB
+    API --> GEMINI
+
+    GEMINI --> AGENT
+    AGENT --> RESULT
+    ```
 _________________________________________________________________________________________________
 
 🚀 Why AI Habit Tracker?
