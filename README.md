@@ -690,10 +690,10 @@ Example:
 * MONGO_URI=your_mongodb_connection
 * JWT_SECRET=your_secret
 * GEMINI_API_KEY=your_gemini_api_key
-* GEMINI_MODEL=gemini-2.5-flash
-* CLIENT_URL=http://localhost:5173
+* GEMINI_MODEL=
+* CLIENT_URL=
 
-CLIENT_URL=http://localhost:5173
+CLIENT_URL=
 4. Start backend
 * npm run dev
 5. Install frontend dependencies
