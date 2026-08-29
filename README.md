@@ -13,29 +13,35 @@ The architecture diagram can look like this
 ```mermaid
 flowchart TD
 
-    U["USER<br/>AI Habit Tracker"]
+    U["👤 USER<br/>AI Habit Tracker"]
 
-    UI["React + Vite UI<br/><br/>Dashboard<br/>Habit Tracking<br/>AI Reports<br/>Habit Health<br/>AI Suggestions<br/>AI Agent"]
+    UI["⚛️ React + Vite<br/><br/>Dashboard<br/>Habit Tracking<br/>AI Reports<br/>Habit Health<br/>AI Suggestions<br/>AI Agent"]
 
-    API["Express / Node.js<br/><br/>Auth Middleware<br/>Habit Controllers<br/>Log Controllers<br/>AI Controllers<br/>AI Agent Service"]
+    API["🟢 Express + Node.js<br/><br/>Authentication<br/>Habit Controllers<br/>Log Controllers<br/>AI Controllers<br/>AI Agent Service"]
 
-    DB["MongoDB Atlas<br/><br/>Users<br/>Habits<br/>Habit Logs<br/>AI Insights<br/>Agent Activity"]
+    DB[("🍃 MongoDB Atlas<br/><br/>Users<br/>Habits<br/>Habit Logs<br/>AI Insights<br/>Agent Activity")]
 
-    GEMINI["Google Gemini<br/><br/>AI Analysis<br/>Suggestions<br/>Reports<br/>Agent Decisions<br/>Motivation"]
+    AI["✨ Google Gemini<br/><br/>AI Analysis<br/>Recommendations<br/>Reports<br/>Motivation<br/>Agent Decisions"]
 
-    AGENT["Autonomous AI Decision<br/><br/>OBSERVE → ANALYZE<br/>→ DECIDE → EXECUTE<br/>→ RECORD"]
+    AGENT["🤖 Autonomous AI Agent<br/><br/>OBSERVE<br/>↓<br/>ANALYZE<br/>↓<br/>DECIDE<br/>↓<br/>EXECUTE<br/>↓<br/>RECORD"]
 
-    RESULT["Habit automatically<br/>improved / created"]
-
+    ACTION["🎯 Habit Action<br/><br/>Improve Habit<br/>Create Habit<br/>Adjust Routine"]
 
     U --> UI
     UI -->|"REST API"| API
 
     API --> DB
-    API --> GEMINI
+    API --> AI
 
-    GEMINI --> AGENT
-    AGENT --> RESULT
+    AI --> AGENT
+    AGENT --> ACTION
+
+    ACTION -->|"Update"| DB
+    DB -->|"New habit data"| API
+    API -->|"Updated insights"| UI
+
+    AGENT -.->|"Continuous learning loop"| AI
+
 ```
 
   
