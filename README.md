@@ -11,7 +11,7 @@ ________________________________________________________________________________
 
 The architecture diagram can look like this
 ```mermaid
-      flowchart TD
+flowchart TD
 
     U["USER<br/>AI Habit Tracker"]
 
@@ -36,7 +36,9 @@ The architecture diagram can look like this
 
     GEMINI --> AGENT
     AGENT --> RESULT
-    ```
+```
+
+  
 _________________________________________________________________________________________________
 
 🚀 Why AI Habit Tracker?
