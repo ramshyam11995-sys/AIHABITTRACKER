@@ -487,52 +487,108 @@ Development & Deployment
 _________________________________________________________________________________________________
 
 📁 Project Structure
+```mermaid
+flowchart TD
 
-AIHABITTRACKER/
-│
-├── backend/
-│   │
-│   ├── controllers/
-│   │   ├── aiController.js
-│   │   ├── aiHealthController.js
-│   │   ├── habitController.js
-│   │   └── ...
-│   │
-│   ├── models/
-│   │   ├── User.js
-│   │   ├── Habit.js
-│   │   ├── HabitLog.js
-│   │   ├── AIInsight.js
-│   │   └── AgentActivity.js
-│   │
-│   ├── routes/
-│   │   ├── ai.js
-│   │   ├── habits.js
-│   │   └── ...
-│   │
-│   ├── services/
-│   │   └── aiAgent.js
-│   │
-│   ├── utils/
-│   │   ├── aiService.js
-│   │   └── dateHelpers.js
-│   │
-│   └── server.js
-│
-├── frontend/
-│   │
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── context/
-│   │   ├── utils/
-│   │   └── api/
-│   │
-│   ├── public/
-│   └── ...
-│
-├── .gitignore
-└── README.md
+    ROOT["AIHABITTRACKER"]
+
+    ROOT --> BACKEND["backend/"]
+    ROOT --> FRONTEND["frontend/"]
+    ROOT --> GIT[".gitignore"]
+    ROOT --> README["README.md"]
+
+    %% =========================
+    %% BACKEND
+    %% =========================
+
+    BACKEND --> BC["controllers/"]
+    BACKEND --> BM["models/"]
+    BACKEND --> BR["routes/"]
+    BACKEND --> BS["services/"]
+    BACKEND --> BU["utils/"]
+    BACKEND --> SERVER["server.js"]
+
+    %% Controllers
+    BC --> AIC["aiController.js"]
+    BC --> AIHC["aiHealthController.js"]
+    BC --> HC["habitController.js"]
+    BC --> BCOTHER["..."]
+
+    %% Models
+    BM --> USER["User.js"]
+    BM --> HABIT["Habit.js"]
+    BM --> HABITLOG["HabitLog.js"]
+    BM --> AIINSIGHT["AIInsight.js"]
+    BM --> AGENTACTIVITY["AgentActivity.js"]
+
+    %% Routes
+    BR --> AIR["ai.js"]
+    BR --> HR["habits.js"]
+    BR --> BROTHER["..."]
+
+    %% Services
+    BS --> AGENT["aiAgent.js"]
+
+    %% Utils
+    BU --> AISERVICE["aiService.js"]
+    BU --> DATEHELPERS["dateHelpers.js"]
+
+    %% =========================
+    %% FRONTEND
+    %% =========================
+
+    FRONTEND --> FSRC["src/"]
+    FRONTEND --> FPUBLIC["public/"]
+    FRONTEND --> FOTHER["..."]
+
+    FSRC --> COMPONENTS["components/"]
+    FSRC --> PAGES["pages/"]
+    FSRC --> CONTEXT["context/"]
+    FSRC --> UTILS["utils/"]
+    FSRC --> API["api/"]
+
+    %% =========================
+    %% RELATIONSHIPS
+    %% =========================
+
+    UI["React Frontend"]
+    UI --> COMPONENTS
+    UI --> PAGES
+
+    PAGES -->|"API Requests"| AIR
+    COMPONENTS -->|"API Requests"| AIR
+
+    AIR --> AIC
+    AIR --> AIHC
+    AIR --> AGENT
+
+    AIC --> AISERVICE
+    AIHC --> HABIT
+    AIHC --> HABITLOG
+
+    AIC --> HABIT
+    AIC --> HABITLOG
+    AIC --> AIINSIGHT
+
+    AGENT --> AISERVICE
+    AGENT --> AGENTACTIVITY
+    AGENT --> HABIT
+
+    AISERVICE --> GEMINI["Google Gemini API"]
+
+    HC --> HABIT
+    HC --> HABITLOG
+
+    HABIT --> DB["MongoDB Atlas"]
+    HABITLOG --> DB
+    USER --> DB
+    AIINSIGHT --> DB
+    AGENTACTIVITY --> DB
+
+    SERVER --> BR
+    SERVER --> DB
+```
+
 _________________________________________________________________________________________________
 
 🔄 Application Flow
