@@ -1,9 +1,9 @@
 
   import axios from "axios";
 
-  const api = axios.create({
-    baseURL: "https://aihabittracker-r7ku.onrender.com/api",
-  });
+ const api = axios.create({
+  baseURL: "https://aihabittracker-r7ku.onrender.com/api",
+});
 
   api.interceptors.request.use((config) => {
     const token = localStorage.getItem("token");
