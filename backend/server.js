@@ -89,6 +89,16 @@ app.get("/api/health", (req, res) => {
 });
 
 // =========================
+// ROOT ROUTE
+// =========================
+
+app.get("/", (req, res) => {
+    res.json({
+        message: "AI Habit Tracker API is running 🚀",
+    });
+});
+
+// =========================
 // API ROUTES
 // =========================
 
